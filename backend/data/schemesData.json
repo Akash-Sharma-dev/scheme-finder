@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Pradhan Mantri Awas Yojana (PMAY)",
+    "description": "Affordable housing scheme for poor",
+    "maxIncome": 300000,
+    "category": ["EWS", "LIG", "OBC", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["All"],
+    "ageGroup": "Adult",
+    "benefitType": "Housing"
+  },
+  {
+    "name": "Ayushman Bharat Yojana",
+    "description": "Health insurance for poor families",
+    "maxIncome": 200000,
+    "category": ["BPL", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["All"],
+    "ageGroup": "All",
+    "benefitType": "Health"
+  },
+  {
+    "name": "Kanya Sumangala Yojana",
+    "description": "Support for girl child education",
+    "maxIncome": 300000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["Uttar Pradesh"],
+    "gender": "Female",
+    "occupation": ["Student"],
+    "ageGroup": "Child",
+    "benefitType": "Education"
+  },
+  {
+    "name": "Ladli Scheme Delhi",
+    "description": "Financial support for girl child",
+    "maxIncome": 200000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["Delhi"],
+    "gender": "Female",
+    "occupation": ["Student"],
+    "ageGroup": "Child",
+    "benefitType": "Education"
+  },
+  {
+    "name": "PM Kisan Samman Nidhi",
+    "description": "Income support for farmers",
+    "maxIncome": 300000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["Farmer"],
+    "ageGroup": "Adult",
+    "benefitType": "Financial"
+  },
+  {
+    "name": "Stand-Up India Scheme",
+    "description": "Loan support for SC/ST and women",
+    "maxIncome": 500000,
+    "category": ["SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["Business"],
+    "ageGroup": "Adult",
+    "benefitType": "Financial"
+  },
+  {
+    "name": "Pradhan Mantri Ujjwala Yojana",
+    "description": "Free LPG connection for women",
+    "maxIncome": 200000,
+    "category": ["BPL", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Female",
+    "occupation": ["All"],
+    "ageGroup": "Adult",
+    "benefitType": "Welfare"
+  },
+  {
+    "name": "Skill India Mission",
+    "description": "Skill training for youth",
+    "maxIncome": 400000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["Student", "Unemployed"],
+    "ageGroup": "Adult",
+    "benefitType": "Skill"
+  },
+  {
+    "name": "Beti Bachao Beti Padhao",
+    "description": "Promotes girl child education",
+    "maxIncome": 300000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Female",
+    "occupation": ["Student"],
+    "ageGroup": "Child",
+    "benefitType": "Education"
+  },
+  {
+    "name": "PM Mudra Yojana",
+    "description": "Loans for small businesses",
+    "maxIncome": 500000,
+    "category": ["General", "OBC", "SC", "ST"],
+    "state": ["All"],
+    "gender": "Any",
+    "occupation": ["Business"],
+    "ageGroup": "Adult",
+    "benefitType": "Financial"
+  }
+]

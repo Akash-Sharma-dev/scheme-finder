@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+}
+
+/* Main layout */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 30px 35px;
+  border-radius: 16px;
+  width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each field */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+/* Labels */
+label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+/* Inputs */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Button */
+button {
+  margin-top: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* Results */
+.results {
+  margin-top: 25px;
+}
+
+/* Result card */
+.result-card {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Score */
+.score {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* Error */
+.error {
+  color: red;
+  margin-top: 8px;
+  font-size: 13px;
+}
