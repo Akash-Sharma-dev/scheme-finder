@@ -38,6 +38,10 @@ const schemeSchema = new mongoose.Schema({
   benefitType: {
     type: String,     // e.g. "Financial", "Education", "Health"
     required: true
+  },
+  link: {
+    type: String,
+    required: true
   }
 });
 
