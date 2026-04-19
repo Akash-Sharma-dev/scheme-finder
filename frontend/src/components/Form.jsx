@@ -74,7 +74,7 @@ setResults(data.data || []);
 
       <div className="field">
         <label>Income</label>
-        <input name="income" onChange={handleChange} />
+        <input name="income" placeholder="Enter income" onChange={handleChange} />
       </div>
 
       <div className="field">

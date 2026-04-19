@@ -27,7 +27,12 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
    const schemes = await Scheme.find({
   maxIncome: { $gte: user.income },
 
-  category: { $regex: `^${user.category}$`, $options: "i" },
+  category: {
+  $in: [
+    "All",
+    new RegExp(`^${user.category}$`, "i")
+  ]
+},
 
   state: {
     $in: [
@@ -57,7 +62,7 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
     ]
   }
 }).select(
-  "name maxIncome category state gender occupation ageGroup benefitType"
+  "name maxIncome category state gender occupation ageGroup benefitType link"
 );
 
     // Scoring logic
@@ -70,7 +75,7 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
         score += 2;
       }
 
-      if (scheme.category.map(c => c.toLowerCase()).includes(user.category.toLowerCase())) {
+      if ((scheme.category || []).map(c => c.toLowerCase()).includes(user.category.toLowerCase())) {
         reasons.push("Category matches");
         score += 2;
       }
@@ -91,7 +96,7 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
         score += 1;
       }
 
-      if (scheme.occupation.map(o => o.toLowerCase()).includes(user.occupation.toLowerCase())) {
+      if ((scheme.occupation || []).map(o => o.toLowerCase()).includes(user.occupation.toLowerCase())) {
         reasons.push("Occupation match");
         score += 2;
       } else if (scheme.occupation.includes("All")) {
@@ -99,7 +104,7 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
         score += 1;
       }
 
-      if (scheme.ageGroup.toLowerCase() === user.ageGroup.toLowerCase()) {
+      if (scheme.ageGroup && scheme.ageGroup.toLowerCase() === user.ageGroup.toLowerCase()) {
         reasons.push("Age group match");
         score += 2;
       } else if (scheme.ageGroup === "All") {
@@ -117,10 +122,11 @@ exports.checkEligibility = asyncHandler(async (req, res, next) => {
       }
 
       return {
-        name: scheme.name,
-        score,
-        reason: reasons.join(", ")
-      };
+  name: scheme.name,
+  score,
+  reason: reasons.join(", "),
+  link: scheme.link   // ⭐ THIS IS THE MISSING PIECE
+};
     });
 
     result.sort((a, b) => b.score - a.score);
