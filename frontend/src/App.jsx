@@ -1,31 +1,16 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Form from "./components/Form";
-import ResultCard from "./components/ResultCard";
+import HomePage from "./pages/HomePage";
+import FormPage from "./pages/FormPage";
 
 function App() {
-  const [results, setResults] = useState([]);
-
   return (
-    <div className="container">
-      <div className="card">
-
-        <h1 className="title">Scheme Finder</h1>
-
-        <Form setResults={setResults} />
-
-        <div className="results">
-          <h2>Results</h2>
-
-          {(!results || results.length === 0) && <p>No results yet</p>}
-
-          {results && results.map((scheme, index) => (
-            <ResultCard key={index} scheme={scheme} />
-          ))}
-        </div>
-
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
