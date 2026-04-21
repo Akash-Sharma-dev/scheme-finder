@@ -23,54 +23,54 @@ function FormPage() {
   }
 
   return (
-    <div className="container">
-      <div className="card" style={{ width: "100%", maxWidth: "900px" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "20px",
-            gap: "12px",
-            flexWrap: "wrap",
-          }}
-        >
+    <div className="sf-form-page">
+      <div className="sf-form-shell">
+        <div className="sf-form-topbar">
           <div>
-            <h1 className="title" style={{ marginBottom: "6px", textAlign: "left" }}>
-              Scheme Finder
-            </h1>
-            <p style={{ margin: 0, color: "#666" }}>
+            <h1 className="sf-form-title">Scheme Finder</h1>
+            <p className="sf-form-subtitle">
               Welcome{user?.name ? `, ${user.name}` : ""} 👋
             </p>
           </div>
 
-          <button
-            onClick={handleLogout}
-            style={{
-              background: "#ef4444",
-              color: "#fff",
-              border: "none",
-              padding: "10px 16px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontWeight: "600",
-            }}
-          >
+          <button className="sf-logout-main-btn" onClick={handleLogout}>
             Logout
           </button>
         </div>
 
-        <Form setResults={setResults} />
+        <div className="sf-form-layout">
+          <div className="sf-form-card">
+            <div className="sf-card-badge">Eligibility Form</div>
+            <h2>Check your matching schemes</h2>
+            <p>
+              Fill your details to discover government schemes based on your
+              profile and preferences.
+            </p>
 
-        <div className="results">
-          <h2>Results</h2>
+            <Form setResults={setResults} />
+          </div>
 
-          {(!results || results.length === 0) && <p>No results yet</p>}
+          <div className="sf-result-card-wrap">
+            <div className="sf-card-badge">Results</div>
+            <h2>Matched schemes</h2>
+            <p>
+              Your most relevant schemes will appear here with reasons and links.
+            </p>
 
-          {results &&
-            results.map((scheme, index) => (
-              <ResultCard key={index} scheme={scheme} />
-            ))}
+            <div className="sf-results-list">
+              {(!results || results.length === 0) && (
+                <div className="sf-empty-state">
+                  <h3>No results yet</h3>
+                  <p>Fill the form and click “Check Eligibility” to see results.</p>
+                </div>
+              )}
+
+              {results &&
+                results.map((scheme, index) => (
+                  <ResultCard key={index} scheme={scheme} />
+                ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
