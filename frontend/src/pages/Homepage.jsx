@@ -1,8 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import "../App.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function HomePage() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <div className="homepage">
@@ -11,57 +17,68 @@ function HomePage() {
           <div className="brand-icon">SF</div>
           <div className="brand-text">
             <h2>Scheme Finder</h2>
-            <p>Government Scheme Discovery Platform</p>
+            <p>Find schemes you may qualify for</p>
           </div>
         </div>
 
-        <nav className="nav-menu">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
         <div className="nav-buttons">
-          <button className="btn btn-light">Login</button>
-          <button className="btn btn-green">Register</button>
+          {!user ? (
+            <>
+              <Link to="/login" className="btn btn-light">Login</Link>
+              <Link to="/register" className="btn btn-green">Register</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/form" className="btn btn-green">Check Scheme</Link>
+              <button onClick={handleLogout} className="btn btn-light">
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </header>
 
-      <section className="hero" id="home">
+      <section className="hero">
         <div className="hero-content">
-          <span className="hero-badge">Smart Eligibility Matching</span>
-
+          <span className="hero-badge">Government Scheme Discovery</span>
           <h1>
-            Find the right <span>government schemes</span> faster and easier
+            Check the best <span>government schemes</span> for you
           </h1>
-
           <p className="hero-description">
-            A modern platform to help users discover suitable government schemes
-            using details like income, category, gender, occupation, state,
-            age group, and preference — all in one place.
+            Register first, login securely, and then access the scheme checker.
+            Your design stays almost same, but now only logged-in users can use
+            the scheme check page.
           </p>
 
           <div className="hero-actions">
-            <button className="btn btn-green btn-large" onClick={() => navigate("/form")}>
-              Check Schemes
-            </button>
-            <button className="btn btn-outline btn-large">
-              Explore More
-            </button>
+            {!user ? (
+              <>
+                <Link to="/register" className="btn btn-green btn-large">
+                  Get Started
+                </Link>
+                <Link to="/login" className="btn btn-outline btn-large">
+                  Login
+                </Link>
+              </>
+            ) : (
+              <Link to="/form" className="btn btn-green btn-large">
+                Go to Scheme Check
+              </Link>
+            )}
           </div>
 
           <div className="hero-stats">
             <div className="stat-card">
-              <h3>100+</h3>
-              <p>Scheme Types</p>
-            </div>
-            <div className="stat-card">
               <h3>Fast</h3>
-              <p>Eligibility Check</p>
+              <p>Quick eligibility check</p>
             </div>
             <div className="stat-card">
-              <h3>Easy</h3>
-              <p>User Experience</p>
+              <h3>Secure</h3>
+              <p>Protected access with login</p>
+            </div>
+            <div className="stat-card">
+              <h3>Useful</h3>
+              <p>Better scheme suggestions</p>
             </div>
           </div>
         </div>
@@ -69,163 +86,42 @@ function HomePage() {
         <div className="hero-visual">
           <div className="hero-panel">
             <div className="panel-header">
-              <div className="dot red"></div>
-              <div className="dot yellow"></div>
-              <div className="dot green"></div>
+              <span className="dot red"></span>
+              <span className="dot yellow"></span>
+              <span className="dot green"></span>
             </div>
-
             <div className="panel-body">
-              <h3>Why Scheme Finder?</h3>
+              <h3>Why this app?</h3>
 
               <div className="feature-line">
-                <span className="feature-icon">✓</span>
-                <p>Clean and simple interface</p>
+                <div className="feature-icon">✓</div>
+                <p>Register and login before access</p>
               </div>
 
               <div className="feature-line">
-                <span className="feature-icon">✓</span>
-                <p>Quick scheme matching process</p>
+                <div className="feature-icon">✓</div>
+                <p>Protected scheme checker page</p>
               </div>
 
               <div className="feature-line">
-                <span className="feature-icon">✓</span>
-                <p>Helpful results with reasons</p>
-              </div>
-
-              <div className="feature-line">
-                <span className="feature-icon">✓</span>
-                <p>Direct official scheme links</p>
+                <div className="feature-icon">✓</div>
+                <p>Easy result cards with links</p>
               </div>
 
               <div className="mini-box-row">
                 <div className="mini-box">
-                  <h4>Students</h4>
-                  <p>Education support</p>
+                  <h4>Auth</h4>
+                  <p>Token based access</p>
                 </div>
                 <div className="mini-box">
-                  <h4>Farmers</h4>
-                  <p>Agriculture benefits</p>
+                  <h4>UI</h4>
+                  <p>Clean and simple frontend</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <section className="section about-section" id="about">
-        <div className="section-heading">
-          <span>About Platform</span>
-          <h2>Built to make scheme discovery simple</h2>
-          <p>
-            Scheme Finder is designed to help people quickly identify relevant
-            government schemes without confusion. It reduces manual searching
-            and makes information more accessible.
-          </p>
-        </div>
-
-        <div className="info-grid">
-          <div className="info-card">
-            <div className="info-icon">01</div>
-            <h3>Smart Matching</h3>
-            <p>
-              Matches users with schemes based on the details they provide in
-              the form.
-            </p>
-          </div>
-
-          <div className="info-card">
-            <div className="info-icon">02</div>
-            <h3>User Friendly</h3>
-            <p>
-              Clean layout and easy steps so anyone can use the platform
-              comfortably.
-            </p>
-          </div>
-
-          <div className="info-card">
-            <div className="info-icon">03</div>
-            <h3>Reliable Flow</h3>
-            <p>
-              Gives result cards with score, reason, and scheme link for better
-              clarity.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section services-section">
-        <div className="service-banner">
-          <div>
-            <span className="small-tag">What you get</span>
-            <h2>Everything needed on one screen</h2>
-          </div>
-
-          <button className="btn btn-green" onClick={() => navigate("/form")}>
-            Start Checking
-          </button>
-        </div>
-
-        <div className="service-cards">
-          <div className="service-card">
-            <h3>Scheme Eligibility</h3>
-            <p>Check whether a person may qualify for suitable schemes.</p>
-          </div>
-
-          <div className="service-card">
-            <h3>Personalized Results</h3>
-            <p>Get recommendations according to profile details and preferences.</p>
-          </div>
-
-          <div className="service-card">
-            <h3>Quick Access</h3>
-            <p>Open scheme links directly from result cards after matching.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section contact-section" id="contact">
-        <div className="section-heading">
-          <span>Contact Us</span>
-          <h2>Need support or platform help?</h2>
-          <p>
-            Reach out for questions, feedback, or help regarding the Scheme
-            Finder platform.
-          </p>
-        </div>
-
-        <div className="contact-layout">
-          <div className="contact-card">
-            <h3>Email</h3>
-            <p>support@schemefinder.com</p>
-          </div>
-
-          <div className="contact-card">
-            <h3>Phone</h3>
-            <p>+91 98765 43210</p>
-          </div>
-
-          <div className="contact-card">
-            <h3>Location</h3>
-            <p>Uttar Pradesh, India</p>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-left">
-          <h3>Scheme Finder</h3>
-          <p>
-            Helping users discover the right government schemes with a better
-            digital experience.
-          </p>
-        </div>
-
-        <div className="footer-right">
-          <p><strong>Email:</strong> support@schemefinder.com</p>
-          <p><strong>Phone:</strong> +91 98765 43210</p>
-          <p><strong>Address:</strong> Uttar Pradesh, India</p>
-        </div>
-      </footer>
     </div>
   );
 }
