@@ -1,47 +1,32 @@
 require("dotenv").config();
 
 const express = require("express");
-
 const cors = require("cors");
+const mongoose = require("mongoose");
 
-const connectDB = require("./config/db");
-
-const Scheme = require("./models/Scheme");
+const authRoutes = require("./routes/authRoutes");
+const schemeRoutes = require("./routes/schemeRoutes");
 
 const app = express();
 
-app.use(cors());
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
+app.use(cors());
 app.use(express.json());
 
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => console.log("DB Error:", err.message));
+
 app.get("/", (req, res) => {
-  res.send("Server running with Express");
+    res.send("Scheme Finder API is running");
 });
 
-app.get("/test", (req, res) => {
-  res.json({ message: "Backend working" });
-});
+app.use("/api/auth", authRoutes);
+app.use("/api/schemes", schemeRoutes);
 
-app.get("/schemes", async (req, res) => {
-  try {
-    const data = await Scheme.find();
-    res.json(data);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Error fetching schemes" });
-  }
-});
-
-const schemeRoutes = require("./routes/schemeRoutes");
-
-connectDB();
-
-app.use("/api", schemeRoutes);
-
-const errorHandler = require("./middleware/errorHandler");
-
-app.use(errorHandler);
-
-app.listen(process.env.PORT, () => {
-  console.log("Express server running on port 5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
