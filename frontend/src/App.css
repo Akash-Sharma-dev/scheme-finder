@@ -901,3 +901,198 @@ a {
         padding: 22px;
     }
 }
+
+
+/* ================= AUTH PAGES ================= */
+
+.sf-auth-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 24%), radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.14), transparent 22%), linear-gradient(135deg, #f8fbff 0%, #eef6ff 45%, #ffffff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+}
+
+.sf-auth-shell {
+    width: 100%;
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+    border-radius: 30px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.sf-auth-left {
+    padding: 56px 48px;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8, #10b981);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sf-auth-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.sf-auth-left h1 {
+    margin: 0 0 16px;
+    font-size: 48px;
+    line-height: 1.08;
+    color: white;
+}
+
+.sf-auth-left p {
+    margin: 0;
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.sf-auth-points {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.sf-auth-point {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 14px 16px;
+    border-radius: 16px;
+    font-weight: 600;
+}
+
+.sf-auth-card {
+    padding: 48px 42px;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sf-auth-card h2 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 34px;
+}
+
+.sf-auth-subtitle {
+    margin: 0 0 24px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.sf-auth-message {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sf-auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sf-auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sf-auth-field label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.sf-auth-field input {
+    width: 100%;
+    padding: 15px 16px;
+    border-radius: 16px;
+    border: 1px solid #dbe4ee;
+    background: #f8fbff;
+    font-size: 15px;
+    color: #0f172a;
+    transition: 0.2s ease;
+}
+
+.sf-auth-field input:focus {
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+    outline: none;
+}
+
+.sf-auth-btn {
+    margin-top: 6px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(34, 197, 94, 0.22);
+    transition: all 0.25s ease;
+}
+
+.sf-auth-btn:hover {
+    transform: translateY(-2px);
+}
+
+.sf-auth-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.sf-auth-switch {
+    margin-top: 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.sf-auth-switch a {
+    color: #2563eb;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .sf-auth-shell {
+        grid-template-columns: 1fr;
+    }
+    .sf-auth-left {
+        padding: 36px 28px;
+    }
+    .sf-auth-left h1 {
+        font-size: 34px;
+    }
+    .sf-auth-card {
+        padding: 34px 24px;
+    }
+}

@@ -53,38 +53,63 @@ function LoginPage() {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <h2>Login</h2>
-        <p>Login to access scheme checker</p>
+    <div className="sf-auth-page">
+      <div className="sf-auth-shell">
+        <div className="sf-auth-left">
+          <div className="sf-auth-badge">Scheme Finder</div>
+          <h1>Welcome Back</h1>
+          <p>
+            Login to continue and check the most relevant government schemes
+            based on your profile, income, category and preferences.
+          </p>
 
-        {message && <div className="auth-message">{message}</div>}
+          <div className="sf-auth-points">
+            <div className="sf-auth-point">✓ Secure login flow</div>
+            <div className="sf-auth-point">✓ Protected scheme checker</div>
+            <div className="sf-auth-point">✓ Fast personalized results</div>
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+        <div className="sf-auth-card">
+          <h2>Login</h2>
+          <p className="sf-auth-subtitle">Login to access scheme checker</p>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          {message && <div className="sf-auth-message">{message}</div>}
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Please wait..." : "Login"}
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="sf-auth-form">
+            <div className="sf-auth-field">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <p className="auth-switch">
-          New user? <Link to="/register">Create account</Link>
-        </p>
+            <div className="sf-auth-field">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <button className="sf-auth-btn" type="submit" disabled={loading}>
+              {loading ? "Please wait..." : "Login"}
+            </button>
+          </form>
+
+          <p className="sf-auth-switch">
+            New user? <Link to="/register">Create account</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

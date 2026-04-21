@@ -54,46 +54,77 @@ function RegisterPage() {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <h2>Register</h2>
-        <p>Create account first to use scheme finder</p>
+    <div className="sf-auth-page">
+      <div className="sf-auth-shell">
+        <div className="sf-auth-left">
+          <div className="sf-auth-badge">Scheme Finder</div>
+          <h1>Create Account</h1>
+          <p>
+            Register once and unlock a cleaner way to discover schemes that
+            match your details and eligibility.
+          </p>
 
-        {message && <div className="auth-message">{message}</div>}
+          <div className="sf-auth-points">
+            <div className="sf-auth-point">✓ Quick registration</div>
+            <div className="sf-auth-point">✓ Smart scheme matching</div>
+            <div className="sf-auth-point">✓ Smooth protected access</div>
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+        <div className="sf-auth-card">
+          <h2>Register</h2>
+          <p className="sf-auth-subtitle">
+            Create account first to use Scheme Finder
+          </p>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+          {message && <div className="sf-auth-message">{message}</div>}
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <form onSubmit={handleSubmit} className="sf-auth-form">
+            <div className="sf-auth-field">
+              <label>Full Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Please wait..." : "Register"}
-          </button>
-        </form>
+            <div className="sf-auth-field">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <p className="auth-switch">
-          Already have account? <Link to="/login">Login</Link>
-        </p>
+            <div className="sf-auth-field">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <button className="sf-auth-btn" type="submit" disabled={loading}>
+              {loading ? "Please wait..." : "Register"}
+            </button>
+          </form>
+
+          <p className="sf-auth-switch">
+            Already have account? <Link to="/login">Login</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
