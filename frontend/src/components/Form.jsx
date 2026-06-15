@@ -31,7 +31,7 @@ function Form({ setResults }) {
     try {
       const token = localStorage.getItem("schemeToken");
 
-      const res = await fetch("http://localhost:5000/api/schemes/check", {
+      const res = await fetch("https://scheme-finder-n4b7.onrender.com/api/schemes/check", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
