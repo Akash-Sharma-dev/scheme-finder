@@ -1,37 +1,30 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("schemeUser")) || null
-  );
-  const [token, setToken] = useState(localStorage.getItem("schemeToken") || "");
-
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("schemeUser", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("schemeUser");
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("schemeUser"));
+    } catch {
+      return null;
     }
+  });
 
-    if (token) {
-      localStorage.setItem("schemeToken", token);
-    } else {
-      localStorage.removeItem("schemeToken");
-    }
-  }, [user, token]);
+  const [token, setToken] = useState(() => localStorage.getItem("schemeToken"));
 
-  const login = (userData, userToken) => {
+  const login = (userData, tokenValue) => {
+    localStorage.setItem("schemeUser", JSON.stringify(userData));
+    localStorage.setItem("schemeToken", tokenValue);
     setUser(userData);
-    setToken(userToken);
+    setToken(tokenValue);
   };
 
   const logout = () => {
-    setUser(null);
-    setToken("");
     localStorage.removeItem("schemeUser");
     localStorage.removeItem("schemeToken");
+    setUser(null);
+    setToken(null);
   };
 
   return (
@@ -39,6 +32,6 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const useAuth = () => useContext(AuthContext);
